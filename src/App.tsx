@@ -35,6 +35,7 @@ const App = () => {
           },
           'body': {
             backgroundColor: theme.colors.background,
+            color: theme.colors.text,
             margin: 0,
             padding: 12,
             height: '100%',

@@ -24,10 +24,12 @@ const layout = [
   ['ent', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'bksp']
 ];
 
-const Keyboard = (props: { onSelect: (letter: string) => void, onEnter: () => void, onBackspace: () => void, letterStates: LetterStates }) => {
-  const { onSelect, onEnter, onBackspace, letterStates } = props;
+const Keyboard = (props: { disabled: boolean, onSelect: (letter: string) => void, onEnter: () => void, onBackspace: () => void, letterStates: LetterStates }) => {
+  const { disabled, onSelect, onEnter, onBackspace, letterStates } = props;
 
   const keyPressHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (disabled) return;
+
     const key = event.key.toLowerCase();
     if (key === 'enter') {
       onEnter();
@@ -41,6 +43,8 @@ const Keyboard = (props: { onSelect: (letter: string) => void, onEnter: () => vo
   };
 
   const onButtonPress = (letter: string) => {
+    if (disabled) return;
+
     if (letter === 'ent') {
       onEnter();
     } else if (letter === 'bksp') {
