@@ -7,6 +7,7 @@
     "build": "esbuild src/index.tsx --define:process.env.NODE_ENV=\\\"production\\\" --inject:src/jsx-shim.js --jsx-factory=jsx --bundle --outfile=public/build/app.js --minify --sourcemap --target=chrome80,firefox65,safari11,edge18"
   },
   "dependencies": {
+    "@anatoliygatt/use-prefers-color-scheme": "^1.0.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "focus-trap-react": "^8.9.1",

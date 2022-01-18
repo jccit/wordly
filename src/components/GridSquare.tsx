@@ -1,10 +1,12 @@
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled'
 import { getBackgroundColor, LetterState } from '../interfaces/Grid';
 
 const GridContainer = styled.div`
   width: 100%;
   padding-bottom: 100%;
-  background-color: #eee;
+  background-color: ${props => props.theme.colors.card.normal};
+  color: ${props => props.theme.colors.text};
   position: relative;
 `;
 
@@ -12,7 +14,7 @@ const SquareText = styled.p`
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-size: 60px;
+  font-size: min(10vw, 60px);
   font-weight: bold;
   text-align: center;
   position: absolute;
@@ -22,9 +24,10 @@ const SquareText = styled.p`
 `;
 
 const GridSquare = (props: { letter: string, state?: LetterState }) => {
+  const theme = useTheme()
   const { letter, state } = props;
 
-  const css = !state ? {} : { backgroundColor: getBackgroundColor(state) };
+  const css = !state ? {} : { backgroundColor: getBackgroundColor(state, theme) };
 
   return (
     <GridContainer css={css}>

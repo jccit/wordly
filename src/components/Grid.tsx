@@ -8,7 +8,7 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 10px;
-  width: 600px;
+  width: 100%;
 `;
 
 const Grid = (props: { grid: GridArray }) => {
