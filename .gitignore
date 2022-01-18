@@ -2,3 +2,4 @@ node_modules/
 .swc/
 public/build/
 public/*.js
+public/*.map

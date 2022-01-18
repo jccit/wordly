@@ -5,10 +5,10 @@ import Keyboard from './components/Keyboard';
 import { GridRow, LetterStates } from "./interfaces/Grid";
 import { isValidWord, randomWord } from './words';
 
-const defaultGrid = Array(6).fill(null).map(() => Array(5).fill({ letter: '' }));
+const getDefaultGrid = () => Array(6).fill(null).map(() => Array(5).fill({ letter: '' }));
 
 const Game = () => {
-  const [grid, setGrid] = useState<GridRow[]>(defaultGrid);
+  const [grid, setGrid] = useState<GridRow[]>(getDefaultGrid());
   const [letters, setLetters] = useState<LetterStates>({});
   const [currentRow, setCurrentRow] = useState(0);
   const [currentCol, setCurrentCol] = useState(0);
@@ -23,6 +23,15 @@ const Game = () => {
       setCurrentCol(currentCol + 1);
     }
   };
+
+  const reset = () => {
+    setGrid(getDefaultGrid());
+    setCurrentRow(0);
+    setCurrentCol(0);
+    setCurrentWord(randomWord());
+    setComplete(false);
+    setLetters({});
+  }
 
   const checkWord = () => {
     // Don't do anything if current row isn't filled
@@ -51,22 +60,25 @@ const Game = () => {
 
     // Update letter states
     const newLetters = { ...letters };
+    let correct = true;
     updatedRow.forEach(letter => {
       newLetters[letter.letter] = letter.state;
+      if (letter.state != 'correct')
+        correct = false;
     });
     setLetters(newLetters);
-
-    // if all states are correct
-    if (Object.values(newLetters).every(state => state === 'correct')) {
-      setComplete(true);
-    }
 
     // Move cursor to next row
     if (currentRow < 5) {
       setCurrentRow(currentRow + 1);
       setCurrentCol(0);
     } else {
+      correct = true;
+    }
+
+    if (correct) {
       setComplete(true);
+      setTimeout(() => reset(), 5000);
     }
   }
 
@@ -84,7 +96,7 @@ const Game = () => {
 
   return (
     <Container>
-      {complete ? <h2>The word was '{currentWord}'</h2> : null }
+      {complete ? <h2>The word was '{currentWord}'. Loading new word...</h2> : null }
       <Grid grid={grid} />
       <Keyboard disabled={complete} onSelect={onLetterSelected} onEnter={checkWord} onBackspace={removeLetter} letterStates={letters} />
     </Container>
