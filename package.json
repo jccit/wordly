@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild src/index.tsx --define:process.env.NODE_ENV=\\\"production\\\" --inject:src/jsx-shim.js --jsx-factory=jsx --bundle --outfile=public/build/app.js --minify --sourcemap --target=chrome80,firefox65,safari11,edge18"
+    "build": "yarn build:web && yarn build:sw",
+    "build:web": "esbuild src/index.tsx --define:process.env.NODE_ENV=\\\"production\\\" --inject:src/jsx-shim.js --jsx-factory=jsx --bundle --outfile=public/build/app.js --minify --sourcemap --target=chrome80,firefox65,safari11,edge18",
+    "build:sw": "workbox generateSW workbox-config.js"
   },
   "dependencies": {
     "@anatoliygatt/use-prefers-color-scheme": "^1.0.0",
@@ -13,10 +15,12 @@
     "focus-trap-react": "^8.9.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "workbox-precaching": "^6.4.2"
   },
   "devDependencies": {
     "esbuild": "^0.14.11",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "workbox-cli": "^6.4.2"
   }
 }
