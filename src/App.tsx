@@ -7,7 +7,7 @@ const getTheme = (dark: boolean) => ({
     background: dark ? '#000' : '#fff',
     text: dark ? '#fff' : '#000',
     card: {
-      normal: dark ? '#111' : '#eee',
+      normal: dark ? '#222' : '#eee',
       correct: dark ? '#00911d' : '#69F0AE',
       partial: dark ? '#E3C000' : '#ff0',
       incorrect: dark ? '#666' : '#bbb'

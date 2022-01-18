@@ -45,6 +45,11 @@ const Keyboard = (props: { disabled: boolean, onSelect: (letter: string) => void
   const onButtonPress = (letter: string) => {
     if (disabled) return;
 
+    // Vibrate if device supports it to simulate keyboard
+    if (navigator.vibrate) {
+      navigator.vibrate(5);
+    }
+
     if (letter === 'ent') {
       onEnter();
     } else if (letter === 'bksp') {

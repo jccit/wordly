@@ -4,12 +4,12 @@ import { getBackgroundColor, LetterState } from "../interfaces/Grid";
 
 const StyledButton = styled.button`
   width: 100%;
-  height: 50px;
+  height: 60px;
   border: 1px solid black;
   border-radius: 4px;
   background-color: ${props => props.theme.colors.card.normal};
   color: ${props => props.theme.colors.text};
-  margin: 2px;
+  margin: 3px;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: bold;
