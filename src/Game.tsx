@@ -16,7 +16,7 @@ const Game = () => {
   const [complete, setComplete] = useState(false);
 
   const onLetterSelected = (letter: string) => {
-    if (currentCol <= 5) {
+    if (currentCol < 5) {
       const newGrid = [...grid];
       newGrid[currentRow][currentCol] = { letter };
       setGrid(newGrid);
