@@ -4,7 +4,7 @@ import { getBackgroundColor, LetterState } from '../interfaces/Grid';
 
 const GridContainer = styled.div`
   width: 100%;
-  padding-bottom: 100%;
+  aspect-ratio: 1;
   background-color: ${props => props.theme.colors.card.normal};
   color: ${props => props.theme.colors.text};
   position: relative;
@@ -14,7 +14,7 @@ const SquareText = styled.p`
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-size: min(10vw, 60px);
+  font-size: min(8vw, 40px);
   font-weight: bold;
   text-align: center;
   position: absolute;

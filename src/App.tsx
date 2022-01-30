@@ -8,8 +8,8 @@ const getTheme = (dark: boolean) => ({
     text: dark ? '#fff' : '#000',
     card: {
       normal: dark ? '#222' : '#eee',
-      correct: dark ? '#00911d' : '#69F0AE',
-      partial: dark ? '#E3C000' : '#ff0',
+      correct: dark ? '#538d4e' : '#9afd91',
+      partial: dark ? '#b59f3b' : '#ffe575',
       incorrect: dark ? '#666' : '#bbb'
     }
   }
@@ -31,7 +31,8 @@ const App = () => {
             backgroundColor: theme.colors.background,
             margin: 0,
             padding: 0,
-            height: '100%'
+            height: '100%',
+            touchAction: 'manipulation'
           },
           'body': {
             backgroundColor: theme.colors.background,
